@@ -7,7 +7,7 @@ import { generatePastPresentConflictStory } from "./story-content/past-present-c
 import { generateNostalgiaStory } from "./story-content/nostalgia"
 import { generateFacingTruthStory } from "./story-content/facing-truth"
 
-export function generateStoryContent(id: number, title: string, image: string): string {
+export function generateStoryContent(id: number, title: string): string {
   // استخدام معرف القصة لإنشاء محتوى مختلف لكل قصة
   const seed = id % 10 // استخدام باقي القسمة على 10 لتحديد نوع القصة
 
@@ -70,7 +70,7 @@ export function generateStoryContent(id: number, title: string, image: string): 
 }
 
 // قصص إضافية
-function generateDarkHumorStory(title: string, image: string): string {
+function generateDarkHumorStory(title: string,  string): string {
   return `
     <p>أضحك. أضحك حتى تدمع عيناي، حتى يؤلمني بطني، حتى أشعر أنني سأختنق. أضحك على نكتة لم يفهمها أحد سواي. نكتة اسمها الحياة.</p>
     
@@ -104,7 +104,7 @@ function generateDarkHumorStory(title: string, image: string): string {
   `
 }
 
-function generatePainfulExperienceStory(title: string, image: string): string {
+function generatePainfulExperienceStory(title: string,  string): string {
   return `
     <p>الألم حقيقي. ليس وهماً، ليس خيالاً، ليس مجرد فكرة. الألم حقيقي، ملموس، حاضر. يسكن في جسدي، في روحي، في كياني. يستيقظ معي في الصباح، يرافقني طوال اليوم، ينام معي في الليل. الألم رفيقي الدائم، ظلي الذي لا يفارقني، صوتي الذي لا يصمت.</p>
     
@@ -140,7 +140,7 @@ function generatePainfulExperienceStory(title: string, image: string): string {
   `
 }
 
-function generateSelfDiscoveryStory(title: string, image: string): string {
+function generateSelfDiscoveryStory(title: string,  string): string {
   return `
     <p>من أنا؟ سؤال بسيط، لكنه يحمل في طياته كل تعقيدات الوجود الإنساني. سؤال طرحته على نفسي مراراً وتكراراً، دون أن أجد إجابة شافية. كأنني أبحث عن شيء مفقود، عن جزء مني ضاع في زحمة الحياة، عن حقيقة مخفية وراء أقنعة متعددة.</p>
     
@@ -176,7 +176,7 @@ function generateSelfDiscoveryStory(title: string, image: string): string {
   `
 }
 
-function generateDefaultStory(title: string, image: string): string {
+function generateDefaultStory(title: string,  string): string {
   return `
     <p>في عالم مليء بالضجيج، نبحث جميعاً عن لحظات من الصمت. لحظات نستطيع فيها سماع أنفسنا، فهم أفكارنا، إدراك مشاعرنا. لحظات نتحرر فيها من ضغوط العالم الخارجي، من توقعات الآخرين، من قيود المجتمع.</p>
     
