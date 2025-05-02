@@ -13,7 +13,6 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   title: "لماذا كل هذا الضجيج؟ | رواية من تأليف عبدالعزيز الحمداني",
   description: "رواية تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، الانكسار الوجودي، والتجارب النفسية المؤلمة",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
