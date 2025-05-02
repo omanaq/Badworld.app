@@ -1,3 +1,4 @@
+// ./app/page.tsx
 "use client"
 
 import { useState, useEffect } from "react"
@@ -14,7 +15,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 z-0" />
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -28,14 +29,14 @@ export default function Home() {
           transition={{ duration: 1, delay: 1 }}
           className="text-amber-500 mb-16 text-lg md:text-xl"
         >
-          هل جاهز لدخول عالم لا نهاية له؟ 🪐
+          هل جاهز لدخول عالم لا نهاية له؟
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: isLoaded ? 1 : 0, scale: 1 }}
           transition={{ duration: 1.2, delay: 1.5 }}
-          className="text-6xl md:text-8xl font-bold mb-8 text-gray-400"
+          className="text-6xl md:text-8xl font-bold mb-8 text-gray-400 leading-tight"
         >
           لماذا
           <br />
@@ -63,7 +64,7 @@ export default function Home() {
         >
           <Button
             asChild
-            className="bg-transparent hover:bg-amber-900/20 text-amber-500 border-2 border-amber-500 text-xl px-12 py-6 rounded-full transition-all duration-300 hover:scale-105"
+            className="bg-transparent hover:bg-amber-900/20 text-amber-500 border-2 border-amber-500 text-xl px-12 py-4 rounded-full transition duration-300"
           >
             <Link href="/story/1">ابدأ</Link>
           </Button>

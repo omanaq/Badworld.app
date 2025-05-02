@@ -1,19 +1,19 @@
-import type React from "react"
 import type { Metadata } from "next"
 import { Cairo } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Providers } from "@/components/providers"
 
 const cairo = Cairo({
   subsets: ["arabic"],
   display: "swap",
+  weight: ["400", "700"],
   variable: "--font-cairo",
 })
 
 export const metadata: Metadata = {
   title: "لماذا كل هذا الضجيج؟ | رواية من تأليف عبدالعزيز الحمداني",
-  description: "رواية تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، الانكسار الوجودي، والتجارب النفسية المؤلمة",
-    generator: 'v0.dev'
+  description: "رواية تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، الانكسار الوجودي، وتفكك الذات في مواجهة العبث.",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -23,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
-      <body className="min-h-screen bg-black text-white font-cairo">
-        <ThemeProvider attribute="class" defaultTheme="dark">
+      <body className="min-h-screen bg-black text-white font-cairo antialiased">
+        <Providers>
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

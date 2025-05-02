@@ -1,3 +1,5 @@
+// ./app/quotes/page.tsx
+
 import { Card, CardContent } from "@/components/ui/card"
 
 const quotes = [
@@ -53,26 +55,26 @@ const quotes = [
 
 export default function QuotesPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 md:p-8 bg-black text-white">
-      <div className="w-full max-w-6xl mx-auto">
-        <header className="mb-12 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-amber-500">اقتباسات أدبية</h1>
-          <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            مجموعة من الاقتباسات التي تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، والتجارب الوجدانية المؤلمة
-          </p>
-        </header>
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 md:p-12 bg-black text-white">
+      <section className="w-full max-w-5xl text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-amber-500">
+          اقتباسات أدبية
+        </h1>
+        <p className="text-lg md:text-xl mb-10 text-gray-300">
+          مجموعة من الاقتباسات التي تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، والتجارب الوجدانية المؤلمة.
+        </p>
+      </section>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {quotes.map((quote, index) => (
-            <Card key={index} className="bg-gray-900 border-amber-900">
-              <CardContent className="p-6">
-                <p className="text-lg mb-4">"{quote.text}"</p>
-                <p className="text-amber-500 text-right">{quote.source}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      <section className="grid gap-6 w-full max-w-5xl md:grid-cols-2">
+        {quotes.map((quote, index) => (
+          <Card key={index} className="bg-gray-900 border border-amber-800 rounded-2xl shadow-lg transition hover:border-amber-600">
+            <CardContent className="p-6 space-y-4">
+              <p className="text-lg leading-relaxed text-gray-100">"{quote.text}"</p>
+              <p className="text-amber-500 text-sm text-right">{quote.source}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
     </main>
   )
 }
