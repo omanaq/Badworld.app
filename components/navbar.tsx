@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="bg-black border-b border-amber-900 py-4 px-4 md:px-8 sticky top-0 z-50">
@@ -27,20 +27,39 @@ export function Navbar() {
 
         {/* Desktop menu */}
         <div className="hidden md:flex gap-6 items-center">
-          <Link href="/" className="text-white hover:text-amber-400 transition-colors">
+          <Link
+            href="/"
+            className="text-white hover:text-amber-400 transition-colors"
+          >
             الرئيسية
           </Link>
-          <Link href="/books" className="text-white hover:text-amber-400 transition-colors">
+          <Link
+            href="/stories"
+            className="text-white hover:text-amber-400 transition-colors"
+          >
+            القصص
+          </Link>
+          <Link
+            href="/books"
+            className="text-white hover:text-amber-400 transition-colors"
+          >
             الكتب
           </Link>
-          <Link href="/gallery" className="text-white hover:text-amber-400 transition-colors">
-            معرض الصور
-          </Link>
-          <Link href="/quotes" className="text-white hover:text-amber-400 transition-colors">
+          <Link
+            href="/quotes"
+            className="text-white hover:text-amber-400 transition-colors"
+          >
             اقتباسات
           </Link>
-          <Button asChild variant="outline" className="border-amber-500 text-amber-500 hover:bg-amber-950">
-            <Link href="https://omanaq.github.io/very-upset/" target="_blank">
+          <Button
+            asChild
+            variant="outline"
+            className="border-amber-500 text-amber-500 hover:bg-amber-950"
+          >
+            <Link
+              href="https://github.com/openaziz/Bad-world-.git"
+              target="_blank"
+            >
               الموقع الرئيسي
             </Link>
           </Button>
@@ -58,18 +77,18 @@ export function Navbar() {
             الرئيسية
           </Link>
           <Link
+            href="/stories"
+            className="text-white hover:text-amber-400 transition-colors py-2 border-b border-gray-800"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            القصص
+          </Link>
+          <Link
             href="/books"
             className="text-white hover:text-amber-400 transition-colors py-2 border-b border-gray-800"
             onClick={() => setIsMenuOpen(false)}
           >
             الكتب
-          </Link>
-          <Link
-            href="/gallery"
-            className="text-white hover:text-amber-400 transition-colors py-2 border-b border-gray-800"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            معرض الصور
           </Link>
           <Link
             href="/quotes"
@@ -78,13 +97,21 @@ export function Navbar() {
           >
             اقتباسات
           </Link>
-          <Button asChild variant="outline" className="border-amber-500 text-amber-500 hover:bg-amber-950">
-            <Link href="https://omanaq.github.io/very-upset/" target="_blank" onClick={() => setIsMenuOpen(false)}>
+          <Button
+            asChild
+            variant="outline"
+            className="border-amber-500 text-amber-500 hover:bg-amber-950"
+          >
+            <Link
+              href="https://github.com/openaziz/Bad-world-.git"
+              target="_blank"
+              onClick={() => setIsMenuOpen(false)}
+            >
               الموقع الرئيسي
             </Link>
           </Button>
         </div>
       )}
     </nav>
-  )
+  );
 }

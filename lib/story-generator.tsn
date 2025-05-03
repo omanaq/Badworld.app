@@ -1,0 +1,293 @@
+/**
+ * مولد القصص المتقدم - Advanced Story Generator
+ * نظام متكامل لإنشاء قصص ديناميكية بناءً على معرّف فريد
+ */
+
+import { v4 as uuidv4 } from 'uuid';
+
+// أنواع القصص المتاحة مع تفاصيل موسعة
+enum StoryType {
+  INTERNAL_CONFLICT = 0,
+  REBELLION = 1,
+  EXISTENTIAL = 2,
+  DARK_HUMOR = 3,
+  PAINFUL_EXPERIENCE = 4,
+  SELF_DISCOVERY = 5,
+  ALIENATION = 6
+}
+
+// بنية مواضيع القصص مع تفاصيل إثرائية
+interface StoryTheme {
+  id: StoryType;
+  title: string;
+  description: string;
+  keywords: string[];
+  mood: 'dark' | 'light' | 'neutral';
+  duration: 'short' | 'medium' | 'long';
+}
+
+// مواضيع القصص مع بيانات غنية
+const STORY_THEMES: StoryTheme[] = [
+  {
+    id: StoryType.INTERNAL_CONFLICT,
+    title: "الصراع النفسي الداخلي",
+    description: "صراع بين الأفكار والمشاعر المتضاربة داخل الإنسان",
+    keywords: ["صراع", "أفكار", "مشاعر", "تناقض", "قلق"],
+    mood: "dark",
+    duration: "medium"
+  },
+  {
+    id: StoryType.REBELLION,
+    title: "التمرد على الواقع",
+    description: "رفض للقيود والمفاهيم المفروضة على الفرد",
+    keywords: ["تمرد", "حرية", "ثورة", "رفض", "تحدي"],
+    mood: "neutral",
+    duration: "long"
+  },
+  {
+    id: StoryType.EXISTENTIAL,
+    title: "الانكسار الوجودي",
+    description: "تساؤلات حول معنى الحياة والوجود",
+    keywords: ["وجود", "معنى", "حياة", "موت", "قلق"],
+    mood: "dark",
+    duration: "long"
+  },
+  {
+    id: StoryType.DARK_HUMOR,
+    title: "السخرية السوداء",
+    description: "نظرة ساخرة للواقع من خلال عدسة مظلمة",
+    keywords: ["سخرية", "ضحك", "مرارة", "واقع", "تناقض"],
+    mood: "light",
+    duration: "short"
+  },
+  {
+    id: StoryType.PAINFUL_EXPERIENCE,
+    title: "التجارب النفسية المؤلمة",
+    description: "مواجهة الألم النفسي والعاطفي",
+    keywords: ["ألم", "معاناة", "تجربة", "صدمة", "شفاء"],
+    mood: "dark",
+    duration: "medium"
+  },
+  {
+    id: StoryType.SELF_DISCOVERY,
+    title: "البحث عن الذات",
+    description: "رحلة الاكتشاف والمعرفة الداخلية",
+    keywords: ["ذات", "رحلة", "اكتشاف", "نمو", "تطور"],
+    mood: "light",
+    duration: "long"
+  },
+  {
+    id: StoryType.ALIENATION,
+    title: "الاغتراب والوحدة",
+    description: "الشعور بالانفصال عن الذات والآخرين",
+    keywords: ["وحدة", "اغتراب", "انفصال", "عزلة", "فراغ"],
+    mood: "dark",
+    duration: "medium"
+  }
+];
+
+// خيارات توليد القصص
+interface StoryOptions {
+  length?: 'short' | 'medium' | 'long';
+  complexity?: 'simple' | 'moderate' | 'complex';
+  perspective?: 'first' | 'second' | 'third';
+}
+
+/**
+ * توليد قصة كاملة مع تفاصيل متكاملة
+ * @param id - المعرف الفريد للقصة
+ * @param title - عنوان القصة
+ * @param options - خيارات إضافية لتوليد القصة
+ * @returns كائن يحتوي على كل تفاصيل القصة
+ */
+export function generateStory(id: number, title: string, options: StoryOptions = {}): Story {
+  const seed = id % STORY_THEMES.length;
+  const theme = STORY_THEMES[seed];
+  const storyId = uuidv4();
+  const createdAt = new Date().toISOString();
+
+  // توليد المحتوى الأساسي
+  let content = generateStoryContent(seed, title, options);
+
+  // توليد ملخص للقصة
+  const summary = generateStorySummary(content, theme);
+
+  return {
+    id: storyId,
+    originalId: id,
+    title,
+    content,
+    summary,
+    theme,
+    metadata: {
+      length: options.length || theme.duration,
+      complexity: options.complexity || 'moderate',
+      perspective: options.perspective || 'first',
+      createdAt,
+      wordCount: content.split(/\s+/).length,
+      readingTime: calculateReadingTime(content)
+    }
+  };
+}
+
+/**
+ * توليد المحتوى الأساسي للقصة
+ */
+function generateStoryContent(seed: number, title: string, options: StoryOptions): string {
+  let content: string;
+
+  switch (seed) {
+    case StoryType.INTERNAL_CONFLICT:
+      content = generateInternalConflictStory(title, options);
+      break;
+    case StoryType.REBELLION:
+      content = generateRebellionStory(title, options);
+      break;
+    case StoryType.EXISTENTIAL:
+      content = generateExistentialBreakdownStory(title, options);
+      break;
+    case StoryType.DARK_HUMOR:
+      content = generateDarkHumorStory(title, options);
+      break;
+    case StoryType.PAINFUL_EXPERIENCE:
+      content = generatePainfulExperienceStory(title, options);
+      break;
+    case StoryType.SELF_DISCOVERY:
+      content = generateSelfDiscoveryStory(title, options);
+      break;
+    case StoryType.ALIENATION:
+      content = generateAlienationStory(title, options);
+      break;
+    default:
+      content = generateDefaultStory(title, options);
+  }
+
+  return wrapStoryContent(title, content, STORY_THEMES[seed]);
+}
+
+/**
+ * توليد ملخص للقصة
+ */
+function generateStorySummary(content: string, theme: StoryTheme): string {
+  const sentences = content.split(/[.!؟]/).filter(s => s.trim().length > 0);
+  const keySentences = sentences
+    .filter(s => theme.keywords.some(kw => s.includes(kw)))
+    .slice(0, 3);
+  
+  return keySentences.join('. ') + '...';
+}
+
+/**
+ * حساب وقت القراءة التقريبي
+ */
+function calculateReadingTime(content: string): number {
+  const words = content.split(/\s+/).length;
+  return Math.ceil(words / 200); // 200 كلمة في الدقيقة
+}
+
+/**
+ * قصة الصراع النفسي الداخلي مع دعم الخيارات
+ */
+function generateInternalConflictStory(title: string, options: StoryOptions): string {
+  const perspective = getPerspective(options.perspective);
+  const lengthModifier = getLengthModifier(options.length);
+
+  return `
+    <section class="story-section" data-theme="internal-conflict">
+      <h2 class="story-subtitle">${title}</h2>
+      
+      <p>في زاوية مظلمة من ${perspective.possessive}عقلي، هناك صوت لا يتوقف عن الصراخ. صوت يتردد صداه في أروقة ${perspective.possessive}روح، يسأل ${perspective.pronoun} سؤالاً واحداً: "لماذا كل هذا الضجيج؟"</p>
+
+      ${lengthModifier > 1 ? `
+      <p>استيقظ${perspective.suffix} هذا الصباح على صوت المطر يقرع النافذة. قطرات تتساقط بإيقاع متناغم، كأنها تحاول إخبار ${perspective.pronoun} بشيء ما. يتساءل ${perspective.pronoun} دائماً عن سبب هذا الصخب الداخلي الذي لا يهدأ.</p>
+      ` : ''}
+
+      <div class="story-quote">
+        <p>"الضجيج الحقيقي ليس ما تسمعه بأذنيك، بل ما تشعر به في روحك."</p>
+        <cite>- جدة الراوي</cite>
+      </div>
+
+      ${lengthModifier > 1 ? `
+      <p>يبدأ ${perspective.pronoun} في تدوين ${perspective.possessive}أفكار. ربما تكون الكتابة هي الطريقة الوحيدة لإسكات هذا الضجيج. ربما من خلال سكب الكلمات على الورق، يستطيع أن يفرغ عقله من كل هذه الأصوات المتداخلة.</p>
+      ` : ''}
+
+      <div class="story-revelation">
+        <p>الضجيج ليس عدواً يجب محاربته، بل صوتاً يجب الاستماع إليه.</p>
+      </div>
+
+      ${lengthModifier > 2 ? `
+      <p>مع الوقت، يتعلم ${perspective.pronoun} كيف يعيش مع هذا الضجيج، كيف يفهمه، كيف يتعايش معه. يصبح الصراع الداخلي ليس مصدر ألم، بل مصدر فهم أعمق لذاته.</p>
+      ` : ''}
+    </section>
+  `;
+}
+
+// باقي دوال توليد القصص...
+
+/**
+ * تغليف المحتوى في هيكل HTML متكامل
+ */
+function wrapStoryContent(title: string, content: string, theme: StoryTheme): string {
+  return `
+    <article class="story-container" data-theme="${theme.id}" data-mood="${theme.mood}">
+      <header class="story-header">
+        <h1 class="story-title">${title}</h1>
+        <div class="story-metadata">
+          <span class="story-theme">${theme.title}</span>
+          <span class="story-mood">${theme.mood === 'dark' ? 'مظلم' : theme.mood === 'light' ? 'مشرق' : 'محايد'}</span>
+          <span class="story-length">${theme.duration === 'short' ? 'قصير' : theme.duration === 'medium' ? 'متوسط' : 'طويل'}</span>
+        </div>
+        <p class="story-description">${theme.description}</p>
+      </header>
+
+      <div class="story-content">
+        ${content}
+      </div>
+
+      <footer class="story-footer">
+        <div class="story-tags">
+          ${theme.keywords.map(kw => `<span class="story-tag">${kw}</span>`).join('')}
+        </div>
+        <p class="story-end">نهاية القصة</p>
+      </footer>
+    </article>
+  `;
+}
+
+// دوال مساعدة
+function getPerspective(perspective?: string): any {
+  switch(perspective) {
+    case 'second':
+      return { pronoun: 'أنت', possessive: 'ك', suffix: '' };
+    case 'third':
+      return { pronoun: 'هو', possessive: 'ه', suffix: '' };
+    default:
+      return { pronoun: 'أنا', possessive: 'ي', suffix: 'ت' };
+  }
+}
+
+function getLengthModifier(length?: string): number {
+  switch(length) {
+    case 'short': return 1;
+    case 'long': return 3;
+    default: return 2;
+  }
+}
+
+// أنواع البيانات
+interface Story {
+  id: string;
+  originalId: number;
+  title: string;
+  content: string;
+  summary: string;
+  theme: StoryTheme;
+  metadata: {
+    length: string;
+    complexity: string;
+    perspective: string;
+    createdAt: string;
+    wordCount: number;
+    readingTime: number;
+  };
+

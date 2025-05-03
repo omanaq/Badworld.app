@@ -1,4 +1,7 @@
-export function generateInternalConflictStory(title: string, image: string): string {
+export function generateInternalConflictStory(
+  title: string,
+  image: string,
+): string {
   return `
     <p>في زاوية مظلمة من عقلي، هناك صوت لا يتوقف عن الصراخ. صوت يتردد صداه في أروقة روحي، يسألني سؤالاً واحداً: "لماذا كل هذا الضجيج؟"</p>
     
@@ -51,5 +54,5 @@ export function generateInternalConflictStory(title: string, image: string): str
     <p>"لماذا كل هذا الضجيج؟" لم يعد هذا السؤال يؤرقني. لأنني أدركت أن الضجيج ليس شيئاً يحتاج إلى تفسير، بل هو ببساطة جزء من كوني إنساناً. جزء من رحلتي في هذه الحياة.</p>
     
     <p>وبهذه الفكرة، أغلق دفتر ملاحظاتي وأبتسم. ابتسامة هادئة، سلمية، متصالحة مع الضجيج، مع الحياة، مع نفسي.</p>
-  `
+  `;
 }

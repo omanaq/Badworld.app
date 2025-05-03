@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true)
-  }, [])
+    setIsLoaded(true);
+  }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white relative overflow-hidden">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900 z-0"></div>
 
       <motion.div
@@ -28,7 +28,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 1 }}
           className="text-amber-500 mb-16 text-lg md:text-xl"
         >
-          هل جاهز لدخول عالم لا نهاية له؟ 🪐
+          هل أنت جاهز لدخول عالم لا نهاية له؟ 🪐
         </motion.p>
 
         <motion.h1
@@ -59,16 +59,24 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: 0 }}
           transition={{ duration: 1, delay: 3 }}
-          className="mt-12"
+          className="flex gap-4 justify-center mt-12"
         >
           <Button
             asChild
             className="bg-transparent hover:bg-amber-900/20 text-amber-500 border-2 border-amber-500 text-xl px-12 py-6 rounded-full transition-all duration-300 hover:scale-105"
           >
-            <Link href="/story/1">ابدأ</Link>
+            <Link href="/story/1">ابدأ القراءة</Link>
+          </Button>
+
+          <Button
+            asChild
+            variant="outline"
+            className="bg-transparent hover:bg-amber-900/20 text-amber-500 border-2 border-amber-500 text-xl px-12 py-6 rounded-full transition-all duration-300 hover:scale-105"
+          >
+            <Link href="/stories">جميع القصص</Link>
           </Button>
         </motion.div>
       </motion.div>
-    </main>
-  )
+    </div>
+  );
 }

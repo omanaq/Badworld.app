@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -6,32 +6,49 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <h3 className="text-xl font-bold mb-4 text-amber-500">الأدب العميق</h3>
+            <h3 className="text-xl font-bold mb-4 text-amber-500">
+              الأدب العميق
+            </h3>
             <p className="text-gray-400">
-              مساحة للتعبير عن الصراع النفسي الداخلي، التمرد على الواقع، والتجارب الوجدانية المؤلمة
+              مساحة للتعبير عن الصراع النفسي الداخلي، التمرد على الواقع،
+              والتجارب الوجدانية المؤلمة
             </p>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-amber-500">روابط سريعة</h3>
+            <h3 className="text-xl font-bold mb-4 text-amber-500">
+              روابط سريعة
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-amber-400 transition-colors">
+                <Link
+                  href="/"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
                   الرئيسية
                 </Link>
               </li>
               <li>
-                <Link href="/books" className="text-gray-400 hover:text-amber-400 transition-colors">
+                <Link
+                  href="/stories"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
+                  القصص
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
                   الكتب
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="text-gray-400 hover:text-amber-400 transition-colors">
-                  معرض الصور
-                </Link>
-              </li>
-              <li>
-                <Link href="/quotes" className="text-gray-400 hover:text-amber-400 transition-colors">
+                <Link
+                  href="/quotes"
+                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                >
                   اقتباسات
                 </Link>
               </li>
@@ -39,9 +56,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-amber-500">تواصل معنا</h3>
+            <h3 className="text-xl font-bold mb-4 text-amber-500">
+              تواصل معنا
+            </h3>
             <Link
-              href="https://omanaq.github.io/very-upset/"
+              href="https://github.com/openaziz/Bad-world-.git"
               target="_blank"
               className="text-amber-500 hover:text-amber-400 transition-colors"
             >
@@ -54,15 +73,15 @@ export function Footer() {
           <p>جميع الحقوق محفوظة © {new Date().getFullYear()} - الأدب العميق</p>
           <p className="mt-2">
             <Link
-              href="https://omanaq.github.io/very-upset/"
+              href="https://github.com/openaziz/Bad-world-.git"
               target="_blank"
               className="text-amber-500 hover:text-amber-400 transition-colors"
             >
-              omanaq.github.io/very-upset
+              github.com/openaziz/Bad-world-.git
             </Link>
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

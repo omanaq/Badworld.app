@@ -1,39 +1,41 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { allImages, storyTitles } from "@/lib/stories"
-import { Button } from "@/components/ui/button"
-import { Search } from "lucide-react"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { getAllStories } from "@/lib/stories";
+import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 export default function StoriesPage() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [filteredStories, setFilteredStories] = useState<{ id: number; title: string; image: string }[]>([])
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredStories, setFilteredStories] = useState<
+    { id: number; title: string; image: string }[]
+  >([]);
 
   useEffect(() => {
     // إنشاء قائمة القصص
-    const stories = allImages.map((image, index) => ({
-      id: index + 1,
-      title: storyTitles[index] || `قصة ${index + 1}`,
-      image,
-    }))
+    const stories = getAllStories();
 
     // تطبيق البحث إذا كان هناك مصطلح بحث
     if (searchTerm) {
-      setFilteredStories(stories.filter((story) => story.title.toLowerCase().includes(searchTerm.toLowerCase())))
+      setFilteredStories(
+        stories.filter((story) =>
+          story.title.toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
+      );
     } else {
-      setFilteredStories(stories)
+      setFilteredStories(stories);
     }
 
     const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 500)
+      setIsLoaded(true);
+    }, 500);
 
-    return () => clearTimeout(timer)
-  }, [searchTerm])
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   return (
     <div className="min-h-screen bg-black text-white py-8 px-4 md:px-8">
@@ -44,10 +46,12 @@ export default function StoriesPage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-amber-500">مجموعة القصص</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-amber-500">
+            مجموعة القصص
+          </h1>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            مجموعة من القصص التي تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، الانكسار الوجودي، والتجارب النفسية
-            المؤلمة
+            مجموعة من القصص التي تعبر عن الصراع النفسي الداخلي، التمرد على
+            الواقع، الانكسار الوجودي، والتجارب النفسية المؤلمة
           </p>
         </motion.div>
 
@@ -88,9 +92,14 @@ export default function StoriesPage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h2 className="text-xl font-bold mb-2 text-amber-500">{story.title}</h2>
+                  <h2 className="text-xl font-bold mb-2 text-amber-500">
+                    {story.title}
+                  </h2>
                   <p className="text-gray-400 text-sm mb-4">قصة {story.id}</p>
-                  <Button variant="outline" className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/20">
+                  <Button
+                    variant="outline"
+                    className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/20"
+                  >
                     اقرأ القصة
                   </Button>
                 </div>
@@ -106,12 +115,15 @@ export default function StoriesPage() {
           className="mt-12 text-center"
         >
           <Link href="/">
-            <Button variant="outline" className="border-amber-500 text-amber-500 hover:bg-amber-950/20">
+            <Button
+              variant="outline"
+              className="border-amber-500 text-amber-500 hover:bg-amber-950/20"
+            >
               العودة للصفحة الرئيسية
             </Button>
           </Link>
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

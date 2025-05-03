@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
 
 const quotes = [
   {
@@ -49,16 +49,19 @@ const quotes = [
     text: "الحقيقة مثل الشمس، يمكنك أن تحجبها لفترة، لكنها لا تغيب.",
     source: "من كتاب الطريق",
   },
-]
+];
 
 export default function QuotesPage() {
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 bg-black text-white">
       <div className="w-full max-w-6xl mx-auto">
         <header className="mb-12 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-amber-500">اقتباسات أدبية</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-amber-500">
+            اقتباسات أدبية
+          </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            مجموعة من الاقتباسات التي تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، والتجارب الوجدانية المؤلمة
+            مجموعة من الاقتباسات التي تعبر عن الصراع النفسي الداخلي، التمرد على
+            الواقع، والتجارب الوجدانية المؤلمة
           </p>
         </header>
 
@@ -74,5 +77,5 @@ export default function QuotesPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

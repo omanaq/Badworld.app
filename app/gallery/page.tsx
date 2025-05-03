@@ -1,4 +1,4 @@
-import { Gallery } from "@/components/gallery"
+import { Gallery } from "@/components/gallery";
 
 // Get all image files from the public directory
 const imageFiles = [
@@ -72,26 +72,29 @@ const imageFiles = [
   "images(8).jpg",
   "images(9).jpg",
   "images.jpg",
-]
+];
 
 export default function GalleryPage() {
   const images = imageFiles.map((file) => ({
     src: `/${file}`,
     alt: "صورة أدبية",
-  }))
+  }));
 
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 bg-black text-white">
       <div className="w-full max-w-6xl mx-auto">
         <header className="mb-12 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-amber-500">معرض الصور</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-amber-500">
+            معرض الصور
+          </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            مجموعة من الصور التي تعبر عن الصراع النفسي الداخلي، التمرد على الواقع، والتجارب الوجدانية المؤلمة
+            مجموعة من الصور التي تعبر عن الصراع النفسي الداخلي، التمرد على
+            الواقع، والتجارب الوجدانية المؤلمة
           </p>
         </header>
 
         <Gallery images={images} />
       </div>
     </main>
-  )
+  );
 }

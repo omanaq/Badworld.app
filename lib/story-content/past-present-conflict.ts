@@ -1,4 +1,7 @@
-export function generatePastPresentConflictStory(title: string, image: string): string {
+export function generatePastPresentConflictStory(
+  title: string,
+  image: string,
+): string {
   return `
     <p>الماضي يطاردني. ليس كذكريات عابرة، بل كأشباح حية، تسكن حاضري، تؤثر في قراراتي، تشكل مستقبلي. كأن الزمن توقف في لحظة معينة، وأنا عالق فيها، لا أستطيع التقدم، لا أستطيع التراجع، لا أستطيع الهروب.</p>
     
@@ -29,5 +32,5 @@ export function generatePastPresentConflictStory(title: string, image: string): 
     <p>وفي هذا التوازن، أجد نوعاً من الحرية. حرية من سطوة الماضي، من ضغط الحاضر، من قلق المستقبل. حرية تسمح لي بالعيش في اللحظة الحالية، مع الاعتراف بتأثير الماضي، والاستعداد للمستقبل.</p>
     
     <p>الصراع بين الماضي والحاضر لم ينتهِ، ولن ينتهي. لكنني تعلمت كيف أعيش معه، كيف أديره، كيف أستفيد منه. تعلمت أن أجعله مصدر قوة، لا ضعف. مصدر نمو، لا جمود. مصدر حكمة، لا حيرة.</p>
-  `
+  `;
 }

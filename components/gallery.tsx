@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { X } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 
 interface GalleryProps {
   images: {
-    src: string
-    alt: string
-  }[]
+    src: string;
+    alt: string;
+  }[];
 }
 
 export function Gallery({ images }: GalleryProps) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <>
@@ -34,7 +34,10 @@ export function Gallery({ images }: GalleryProps) {
         ))}
       </div>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog
+        open={!!selectedImage}
+        onOpenChange={() => setSelectedImage(null)}
+      >
         <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
           <button
             onClick={() => setSelectedImage(null)}
@@ -44,11 +47,16 @@ export function Gallery({ images }: GalleryProps) {
           </button>
           {selectedImage && (
             <div className="relative w-full h-[80vh]">
-              <Image src={selectedImage || "/placeholder.svg"} alt="صورة مكبرة" fill className="object-contain" />
+              <Image
+                src={selectedImage || "/placeholder.svg"}
+                alt="صورة مكبرة"
+                fill
+                className="object-contain"
+              />
             </div>
           )}
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }
